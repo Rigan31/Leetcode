@@ -27,6 +27,7 @@ The problem is kind of similar to merge sort where we have to combine the two so
 ## 4.Best Time to Buy and Sell Stock
 
 **_array_**
+
 We can maintain two variables - minprice and maxprofit corresponding to the smallest valley and maximum profit (maximum difference between selling price and minprice) obtained so far respectively
 
 ## 5.Valid Palindrome
@@ -56,3 +57,9 @@ Keep the occurrences of every character of the first string in an array. As ther
 **_binarySearch_**
 
 Normal Binary search which will reduce the search length by half every time.
+
+## 9.Flood Fill
+
+**_dfs, bfs, matrix_**
+
+Both BFS and DFS work here. We are going to use a queue to store the current node and also a matrix to store the information if we have already colored this node or not. Then we are going to check the 4 directions of the current node. If the node of the same color is found then we will add it to the queue and change the color of the node to the target color and keep doing this until the queue is empty. Time complexity: O(m\*n) because in the worst case we have to visit every cell of the matrix.
