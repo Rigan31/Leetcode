@@ -1,0 +1,59 @@
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        int len = s.length();
+        int dp[1005][1005];
+
+        // initially all data will be zero..IDNK why some of the value of dp array are kept 1
+        for(int i = 0; i< 1005; i++){
+            for(int j = 0; j < 1005; j++){
+                dp[i][j] = 0;
+            }
+        }
+
+
+        // all length 1 substring is palindrome
+        for(int i = 0; i < len; i++){
+            dp[i][i] = 1;
+        }
+
+        // if length 2 substring is palindrome or not
+        for(int i = 0; i < len-1; i++){
+            dp[i][i+1] = (s[i] == s[i+1]) ? 1 : 0;
+        }
+
+        // dp[i][j] = dp[i+1][j-1] and s[i] == s[j]
+        // because if the first and last character of a string are same and the inner 
+        // part of the substring is also a palindrome then the whole substring is palindrome
+
+        for(int l = 2; l < len; l++){
+            for(int i = 0; i < len; i++){
+                if(i+l < len){
+                    int j = i + l;
+                    if(dp[i+1][j-1] == 1 && s[i]== s[j]){
+                        dp[i][j] = 1; 
+                    }
+                }
+            }
+        }
+
+        int l = 0, r = 0;
+        int maxLen = 0;
+
+        // now traversing the 2D array to find the max length
+        for(int i = 0; i < len; i++){
+            for(int j = i; j < len; j++){
+                if(dp[i][j] == 1 && (j-i+1) > maxLen){
+                    l = i;
+                    r = j;
+                    maxLen = j-i+1;
+                }
+            }
+        }
+
+        // so the overall complexity is O(n^2)
+        return s.substr(l, maxLen);
+        
+    }
+    
+};
