@@ -100,15 +100,16 @@ We have two pointers - slow and fast. Slow pointer will move one step at a time 
 
 Assume when the fast and slow pointer meet, the slow pointer has moved "s" distance and fast pointer has moved "f" distance. The distance before the starting point of the cycle is "x" and the distance between the starting point and the meeting point is "y" and the distance between the meeting point and the starting point is "z". Then we have the following equations:
 
-```
-    l = y + z  //length of the cycle
-    f = x + c1*l + y // fast pointer distance
-    s = x + c2*l + y // slow pointer distance
-    f = 2*s // fast pointer is twice as slow pointer
+```python
+    l = y + z # length of the cycle
+    f = x + c1*l + y # fast pointer distance
+    s = x + c2*l + y # slow pointer distance
+    f = 2*s # fast pointer is twice as slow pointer
     x + c1*l + y = 2*(x + c2*l + y)
     x + y = (c1 - 2*c2)*l
     x = (c1 - 2*c2 - 1)*l + z
     x = c3*l + z
+
 ```
 
 So, after confirming that there is a cycle in the linked list, we will move the slow pointer to the head of the linked list and move both the pointers one step at a time. When they meet, the meeting point will be the starting point of the cycle.
