@@ -143,3 +143,43 @@ So, after confirming that there is a cycle in the linked list, we will move the 
 **_stack, queue_**
 
 We are going to use two stacks. One stack will be used to store the elements and the other stack will be used to reverse the order of the elements. When we push an element to the queue, we will push it to the first stack. Time Complexity of Push operation is O(1). When we peek or pop an element from the queue, we will first check whether the second stack is empty or not. If it is empty then we will push all the elements from the first stack to the second stack until the first stack is empty. Then we will return the top element of the second stack. For pop operation, we will also pop the top element of the second stack. Time Complexity of Pop and Peek operation is amortized O(1) because we are pushing all the elements from the first stack to the second stack only once. Beacuse of this reason the rest of the pop operation will be O(1) though the first pop operation will be O(n) where n is the length of the first stack.
+
+## 14.First Bad Version
+
+**_binarySearch_**
+
+We are going to use the binary search algortihm as we have to minimize the number of calls to the API. So, we will find the middle element and check whether it is a bad version or not. If it is a bad version then we will move the **right pointer to the middle element.**Also one thing to notice here that we are not using the **middle element - 1 because we have to find the first bad version.**So this middle element have the possibility to be the first bad verison. On the other hand if it is not a bad version then we will move the left pointer to the middle element + 1.Also the condition for the while loop is **left < right not left <= right** because the exit condition of the while loop is when the left pointer is equal or greater than the right pointer. Time Complexity O(logn) and Space Complexity O(1).
+
+**Buffer Overflow Problem**
+
+As the value of left and right pointer can be very large, (left + right) can cause an integer overflow. So, there is two solution for this. One is to use the long data type and the other is to use the following formula:
+
+```c++
+    int mid = left + (right - left)/2;
+```
+
+## 15.Ransom Note
+
+**_hashTable string_**
+
+The problem is similar to the problem **Valid Anagram**. We are going to use a hash table to store the frequency of the characters of the magazine string. Then we will traverse the ransom note string and for each character we will decrease the frequency of that character in the hash table. If the frequency of any character is less than 0 then we will return false. Because less than 0 signifies that the character is not present in the magazine string. Time Complexity O(n) where n is the length of the larger string. Space Complexity O(1)
+because the hash table will have at most 26 characters.
+
+## 16.Climbing Stairs
+
+**_dynamicProgramming_**
+
+We are going to use the dynamic programming approach. We will store the number of ways to reach the ith step in an array. Then we will find the number of ways to reach the ith step by adding the number of ways to reach the (i-1)th and (i-2)th step. **dp[i] = dp[i-1] + dp[i-2]**. Time Complexity O(n) and Space Complexity O(n).
+
+## 17.Longest Palindrome
+
+**_hashTable string_**
+
+We are going to use a hash table to store the frequency of the chracters of the string. Then we will traverse the hash table and for each character if the freq is even we will add it to the result. On the other hand, if the freq is odd then we will add the freq - 1 to the result. Also a flag variable to check whether there is a character with odd frequency or not. If there is a character with odd frequency then we will add 1 to the result. TIme Complexity O(n) and Space Complexity O(1) because the hash table will have at most 52 characters.
+
+## 18. Reverse Linked List
+
+**_linkedlist_**
+
+We are going to use three pointers - prev, curr and next. We will move the next pointer to the next node of the current node. Then current next pointer will point to the previous node. Then we will move the previous pointer to the current node and finally we will move the current pointer to the next node. Keep doing this until the current pointer is null. Lastly we will return the previous pointer. Time Complexity O(n) and Space Complexity O(1).
+
