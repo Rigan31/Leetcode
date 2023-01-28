@@ -69,9 +69,13 @@ Both BFS and DFS work here. We are going to use a queue to store the current nod
 
 **_binarySearchTree, dfs_**
 
-**Iterative Approach:**The properties that separate Binary Search Tree from a regular binary tree are All nodes of the left subtree are less than the root node and all nodes of the right subtree are greater than the root node. We can use this property to find the LCA. If both the nodes are less than the root node then we will go to the left node. If both the nodes are greater than the root node then we will go to the right node.Otherwise, p and q are on the opposite side and the current root is the LCA because after that both are going to have different parent node. Time complexity O(h) where h is the hight of the binary search tree. Space Complexity O(1) because we are not using any extra space. The height of the tree will be log(n) if the tree is balanced and n if the tree is not balanced.
+**Iterative Approach:**
 
-**Recursive Approach:** The recursive approach is pretty much similar to the iterative approach. The only difference is that we are using the recursive call to find the LCA. Time complexity O(h) where h is the hight of the binary search tree. Space Complexity O(h) because we are using the recursive call stack.
+The properties that separate Binary Search Tree from a regular binary tree are All nodes of the left subtree are less than the root node and all nodes of the right subtree are greater than the root node. We can use this property to find the LCA. If both the nodes are less than the root node then we will go to the left node. If both the nodes are greater than the root node then we will go to the right node.Otherwise, p and q are on the opposite side and the current root is the LCA because after that both are going to have different parent node. Time complexity O(h) where h is the hight of the binary search tree. Space Complexity O(1) because we are not using any extra space. The height of the tree will be log(n) if the tree is balanced and n if the tree is not balanced.
+
+**Recursive Approach:**
+
+The recursive approach is pretty much similar to the iterative approach. The only difference is that we are using the recursive call to find the LCA. Time complexity O(h) where h is the hight of the binary search tree. Space Complexity O(h) because we are using the recursive call stack.
 
 ## 11.Balanced Binary Tree
 
@@ -96,8 +100,8 @@ We have two pointers - slow and fast. Slow pointer will move one step at a time 
 
 Assume when the fast and slow pointer meet, the slow pointer has moved "s" distance and fast pointer has moved "f" distance. The distance before the starting point of the cycle is "x" and the distance between the starting point and the meeting point is "y" and the distance between the meeting point and the starting point is "z". Then we have the following equations:
 
-```math
-    l = y + z // length of the cycle
+```
+    l = y + z  //length of the cycle
     f = x + c1*l + y // fast pointer distance
     s = x + c2*l + y // slow pointer distance
     f = 2*s // fast pointer is twice as slow pointer
